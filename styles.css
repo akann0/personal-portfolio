@@ -67,6 +67,11 @@ body {
 .card p { margin: 0; color: var(--muted); }
 .tag { display: inline-block; margin-left: .5rem; padding: .15rem .4rem; background: rgba(124,58,237,.15); color: #c4b5fd; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
 
+.links { margin-top: .6rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.link-pill { display: inline-block; padding: .25rem .5rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); background: transparent; font-size: .85rem; }
+.link-pill:hover { background: var(--card); }
+.link-pill svg { width: 16px; height: 16px; display: block; }
+
 .list { padding-left: 1rem; }
 .list li { margin: .25rem 0; }
 
