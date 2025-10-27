@@ -38,6 +38,15 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   let active = '';
 
   function apply(tag) {
+    // Set CSS variable for active role color on root
+    const roleToColorVar = {
+      swe: 'var(--role-swe)',
+      ml: 'var(--role-ml)',
+      data: 'var(--role-data)',
+      genai: 'var(--role-genai)'
+    };
+    document.documentElement.style.setProperty('--role-active', roleToColorVar[tag] || '');
+
     document.querySelectorAll('[data-tags]').forEach(el => {
       const tokens = (el.dataset.tags || '').split(/\s+/).filter(Boolean);
       // Avoid outlining the entire Technical Skills section

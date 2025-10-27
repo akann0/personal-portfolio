@@ -7,6 +7,13 @@
   --brand: #7c3aed;
   --accent: #22c55e;
   --gold: #f59e0b;
+  /* Role palette */
+  --role-swe: var(--gold);
+  --role-ml: #86efac;    /* light green */
+  --role-data: #60a5fa;  /* light blue */
+  --role-genai: #f472b6; /* pink */
+  /* Active role color (set dynamically) */
+  --role-active: var(--gold);
 }
 
 /* Light theme */
@@ -48,11 +55,22 @@ body {
 .nav a:hover { background: var(--card); }
 
 /* Filter buttons */
-.filter-btn[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+.filter-btn[aria-pressed="true"] { border-color: var(--role-active, var(--gold)); }
 .filter-btn.btn { background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 86%, #ffffff) 0%, var(--brand) 100%); border: 1px solid color-mix(in oklab, var(--brand) 70%, #000); }
-.filter-btn.btn[aria-pressed="true"] { outline: 2px solid color-mix(in oklab, var(--gold) 65%, transparent); outline-offset: 2px; }
+.filter-btn.btn[data-filter="swe"] { background: linear-gradient(135deg, color-mix(in oklab, var(--role-swe) 86%, #ffffff) 0%, var(--role-swe) 100%); border-color: color-mix(in oklab, var(--role-swe) 50%, #000); }
+.filter-btn.btn[data-filter="ml"] { background: linear-gradient(135deg, color-mix(in oklab, var(--role-ml) 86%, #ffffff) 0%, var(--role-ml) 100%); border-color: color-mix(in oklab, var(--role-ml) 50%, #000); }
+.filter-btn.btn[data-filter="data"] { background: linear-gradient(135deg, color-mix(in oklab, var(--role-data) 86%, #ffffff) 0%, var(--role-data) 100%); border-color: color-mix(in oklab, var(--role-data) 50%, #000); }
+.filter-btn.btn[data-filter="genai"] { background: linear-gradient(135deg, color-mix(in oklab, var(--role-genai) 86%, #ffffff) 0%, var(--role-genai) 100%); border-color: color-mix(in oklab, var(--role-genai) 50%, #000); }
+.filter-btn.btn[aria-pressed="true"] { outline: 2px solid var(--role-active, var(--gold)); outline-offset: 2px; }
+/* Ensure readable ink on light role backgrounds */
+.filter-btn.btn[data-filter="swe"],
+.filter-btn.btn[data-filter="ml"],
+.filter-btn.btn[data-filter="data"],
+.filter-btn.btn[data-filter="genai"] { color: #0b0c10; }
+.filter-btn.btn[data-filter][aria-pressed="true"],
+.filter-btn.btn[data-filter]:hover { color: #0b0c10; }
 
-.btn { display: inline-block; padding: .6rem .9rem; border-radius: 12px; background: var(--brand); color: white; text-decoration: none; border: 1px solid transparent; box-shadow: 0 6px 14px rgba(124,58,237,.25); }
+.btn { display: inline-block; padding: .6rem .9rem; border-radius: 12px; background: var(--brand); color: white; text-decoration: none; border: 1px solid transparent; box-shadow: 0 6px 14px rgba(124,58,237,.25); font-family: inherit; font-weight: 600; letter-spacing: 0; }
 .btn:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 10px 18px rgba(124,58,237,.35); }
 .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
 
@@ -74,7 +92,7 @@ body {
 .tag { display: inline-block; margin-left: .5rem; padding: .15rem .4rem; background: rgba(124,58,237,.15); color: #c4b5fd; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
 
 /* Highlighting */
-.highlight { box-shadow: 0 0 0 2px color-mix(in oklab, var(--gold) 35%, transparent); border-color: var(--gold) !important; }
+.highlight { box-shadow: 0 0 0 2px color-mix(in oklab, var(--role-active, var(--gold)) 35%, transparent); border-color: var(--role-active, var(--gold)) !important; }
 
 /* Skills chips */
 .skills-groups { display: grid; gap: 1rem; }
@@ -88,7 +106,7 @@ body {
 }
 .skill-chip:hover { color: var(--gold); }
 .skill-chip:focus { outline: none; }
-.skill-chip.highlight { color: var(--gold); }
+.skill-chip.highlight { color: var(--role-active, var(--gold)); }
 
 .skill-details { margin-top: 1rem; padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
 .skill-details h3 { margin: 0 0 .25rem; font-size: 1.05rem; }
@@ -96,8 +114,8 @@ body {
 
 /* Project card shimmer + gold background */
 .card.highlight {
-  background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 10%, var(--card)) 0%, color-mix(in oklab, var(--gold) 18%, var(--card)) 100%);
-  border-color: color-mix(in oklab, var(--gold) 65%, var(--border));
+  background: linear-gradient(135deg, color-mix(in oklab, var(--role-active, var(--gold)) 10%, var(--card)) 0%, color-mix(in oklab, var(--role-active, var(--gold)) 18%, var(--card)) 100%);
+  border-color: color-mix(in oklab, var(--role-active, var(--gold)) 65%, var(--border));
   position: relative;
   overflow: hidden;
 }
@@ -120,8 +138,8 @@ body {
 
 /* Timeline items use same gold highlight as project cards */
 .item.highlight {
-  background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 10%, var(--card)) 0%, color-mix(in oklab, var(--gold) 18%, var(--card)) 100%);
-  border-color: color-mix(in oklab, var(--gold) 65%, var(--border));
+  background: linear-gradient(135deg, color-mix(in oklab, var(--role-active, var(--gold)) 10%, var(--card)) 0%, color-mix(in oklab, var(--role-active, var(--gold)) 18%, var(--card)) 100%);
+  border-color: color-mix(in oklab, var(--role-active, var(--gold)) 65%, var(--border));
   position: relative;
   overflow: hidden;
 }

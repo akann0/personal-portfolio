@@ -32,16 +32,18 @@
 
     <main id="main" class="container">
       <p>This website is still in beta - while I focus time into making the UI something to be proud of,
-        I hope this site as-is provides a deeper look into my skills and experiences than a one-page resume</p>
+        I hope this site as-is provides a deeper look into my skills and experiences than a one-page resume
+      </p>
       <section id="hero" class="hero">
         <h1>Hi, I'm Aaron Kann<span class="accent">.</span></h1>
         <p class="lead">I'm a 22-year-old Master's student who enjoys Learning about mathematics, solving problems, and telling stories through data.
           I'm passionate about statistics, building fun things, and being a part of successful teams.  
         </p>
+        <p>Click one of the buttons below to highlight my experiences that match a certain role:</p>
         <div class="actions">
+          <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
           <button class="btn filter-btn" data-filter="swe" aria-pressed="false">SWE</button>
           <button class="btn filter-btn" data-filter="ml" aria-pressed="false">ML</button>
-          <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
           <button class="btn filter-btn" data-filter="genai" aria-pressed="false">Gen AI</button>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
@@ -82,11 +84,13 @@
             <h3>Other</h3>
             <div class="skills-list">
               <button class="skill-chip" data-skill="Git" data-tags="swe">Git</button>
-              <button class="skill-chip" data-skill="Cursor Code" data-tags="swe">Cursor Code</button>
-              <button class="skill-chip" data-skill="Microsoft Excel" data-tags="data">Microsoft Excel</button>
+              <button class="skill-chip" data-skill="Cursor Code" data-tags="swe genai">Cursor Code</button>
+              <button class="skill-chip" data-skill="GitHub CoPilot" data-tags="genai swe">GitHub CoPilot</button>
+              <button class="skill-chip" data-skill="Excel" data-tags="data">Excel</button>
               <button class="skill-chip" data-skill="Word" data-tags="">Word</button>
               <button class="skill-chip" data-skill="Tableau" data-tags="data">Tableau</button>
               <button class="skill-chip" data-skill="REST APIs" data-tags="swe data">REST API’s</button>
+              <button class="skill-chip" data-skill="Canva" data-tags="">Canva</button>
             </div>
           </div>
         </div>
@@ -99,18 +103,18 @@
       <section id="projects" class="section">
         <h2>Some Passion Projects to Demonstrate My Skills</h2>
         <div class="grid">
-          <article class="card" data-tags="ml data swe">
+          <article class="card" data-tags="ml data swe genai">
             <h3><a href="https://akann0.github.io/election-of-our-lifetime-frontend/" target="_blank" rel="noopener">Election of Our Lifetime</a></h3>
-            <p>Explores sentiment from Reddit headlines using word vectorization. Purely for entertainment purposes. <span class="tag">Sentiment Analysis</span> <span class="tag">Python</span> <span class="tag">Flask</span> <span class="tag">React</span></p>
+            <p>Explores sentiment from Reddit headlines using word vectorization. Purely for entertainment purposes. <span class="tag">Sentiment Analysis</span> <span class="tag">Python</span> <span class="tag">Flask</span> <span class="tag">React</span> <span class="tag">Cursor</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/akann0/election-of-our-lifetime-frontend" target="_blank" rel="noopener" aria-label="GitHub repository">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
               </a>
             </div>
           </article>
-          <article class="card" data-tags="ml data">
+          <article class="card" data-tags="ml data genai">
             <h3><a href="https://akann0.github.io/beat-the-books/" target="_blank" rel="noopener">Beat The Bookies</a></h3>
-            <p>A couple of attempts at data-driven approaches to sports betting, for both soccer and the MLB.<span class="tag">Machine Learning</span> <span class="tag">Python</span> <span class="tag">Jupyter</span></p>
+            <p>A couple of attempts at data-driven approaches to sports betting, for both soccer and the MLB.<span class="tag">Machine Learning</span> <span class="tag">Python</span> <span class="tag">Jupyter</span> <span class="tag">Cursor</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/akann0/beat-the-books" target="_blank" rel="noopener" aria-label="GitHub repository">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
