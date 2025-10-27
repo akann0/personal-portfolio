@@ -18,7 +18,6 @@
         <a class="brand" href="#top">AK</a>
         <nav class="nav" aria-label="Primary">
           <button id="themeToggle" class="btn btn-ghost" aria-pressed="false" aria-label="Toggle dark mode">🌓</button>
-          <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#education">Education</a>
@@ -32,36 +31,75 @@
     </header>
 
     <main id="main" class="container">
+      <p>This website is still in beta - while I focus time into making the UI something to be proud of,
+        I hope this site as-is provides a deeper look into my skills and experiences than a one-page resume</p>
       <section id="hero" class="hero">
         <h1>Hi, I'm Aaron Kann<span class="accent">.</span></h1>
-        <p class="lead">I'm a 22-year-old Master's student who is passionate about mathematics, solving problems, and telling stories through data.</p>
+        <p class="lead">I'm a 22-year-old Master's student who enjoys Learning about mathematics, solving problems, and telling stories through data.
+          I'm passionate about statistics, building fun things, and being a part of successful teams.  
+        </p>
         <div class="actions">
-          <a class="btn" href="#projects">See projects</a>
+          <button class="btn filter-btn" data-filter="swe" aria-pressed="false">SWE</button>
+          <button class="btn filter-btn" data-filter="ml" aria-pressed="false">ML</button>
+          <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
+          <button class="btn filter-btn" data-filter="genai" aria-pressed="false">Gen AI</button>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </section>
 
-      <section id="about" class="section">
-        <h2>About</h2>
-        <p>I'm a Master's student in <strong>Data Science</strong> at the <strong>University of Washington</strong>. I love mathematics, solving problems, and telling stories through data. I enjoy building practical tools and sharing what I learn along the way.</p>
-        <ul class="meta">
-          <li>Current location: Seattle, WA</li>
-          <li>Looking for: internships, research opportunities, or part-time positions</li>
-        </ul>
-      </section>
 
-      <section id="skills" class="section">
-        <h2>Skills</h2>
-        <ul class="list">
-          <li><strong>Languages</strong>: Python, JavaScript, SQL, R, TypeScript, HTML/CSS, Java, C++, C</li>
-          <li><strong>Frameworks/Tools</strong>: React, Django, Flask, Seaborn, Tableau, Cursor</li>
-        </ul>
+      <section id="skills" class="section" data-tags="swe ml data genai">
+        <h2>Technical Skills</h2>
+        <div class="skills-groups">
+          <div class="skills-group" data-group="languages">
+            <h3>Languages</h3>
+            <div class="skills-list">
+              <button class="skill-chip" data-skill="Python" data-tags="swe ml data genai">Python</button>
+              <button class="skill-chip" data-skill="JavaScript" data-tags="swe">JavaScript</button>
+              <button class="skill-chip" data-skill="SQL" data-tags="data">SQL</button>
+              <button class="skill-chip" data-skill="R" data-tags="data ml">R</button>
+              <button class="skill-chip" data-skill="TypeScript" data-tags="swe">TypeScript</button>
+              <button class="skill-chip" data-skill="HTML/CSS" data-tags="swe">HTML/CSS</button>
+              <button class="skill-chip" data-skill="Java" data-tags="swe">Java</button>
+              <button class="skill-chip" data-skill="C++" data-tags="swe">C++</button>
+              <button class="skill-chip" data-skill="C" data-tags="swe">C</button>
+            </div>
+          </div>
+          <div class="skills-group" data-group="frameworks">
+            <h3>Frameworks</h3>
+            <div class="skills-list">
+              <button class="skill-chip" data-skill="React" data-tags="swe">React</button>
+              <button class="skill-chip" data-skill="Django" data-tags="swe">Django</button>
+              <button class="skill-chip" data-skill="Flask" data-tags="swe data">Flask</button>
+              <button class="skill-chip" data-skill="Seaborn" data-tags="data">Seaborn</button>
+              <button class="skill-chip" data-skill="SciKit ML" data-tags="ml data">SciKit ML</button>
+              <button class="skill-chip" data-skill="NumPy/Pandas" data-tags="data ml">NumPy/Pandas</button>
+              <button class="skill-chip" data-skill="Selenium" data-tags="swe">Selenium</button>
+              <button class="skill-chip" data-skill="BERT" data-tags="genai ml">BERT</button>
+            </div>
+          </div>
+          <div class="skills-group" data-group="other">
+            <h3>Other</h3>
+            <div class="skills-list">
+              <button class="skill-chip" data-skill="Git" data-tags="swe">Git</button>
+              <button class="skill-chip" data-skill="Cursor Code" data-tags="swe">Cursor Code</button>
+              <button class="skill-chip" data-skill="Microsoft Excel" data-tags="data">Microsoft Excel</button>
+              <button class="skill-chip" data-skill="Word" data-tags="">Word</button>
+              <button class="skill-chip" data-skill="Tableau" data-tags="data">Tableau</button>
+              <button class="skill-chip" data-skill="REST APIs" data-tags="swe data">REST API’s</button>
+            </div>
+          </div>
+        </div>
+        <div id="skillDetails" class="skill-details" aria-live="polite" hidden>
+          <h3 id="skillName"></h3>
+          <p id="skillDesc"></p>
+        </div>
       </section>
 
       <section id="projects" class="section">
         <h2>Some Passion Projects to Demonstrate My Skills</h2>
         <div class="grid">
-          <article class="card">
+          <article class="card" data-tags="ml data swe">
             <h3><a href="https://akann0.github.io/election-of-our-lifetime-frontend/" target="_blank" rel="noopener">Election of Our Lifetime</a></h3>
             <p>Explores sentiment from Reddit headlines using word vectorization. Purely for entertainment purposes. <span class="tag">Sentiment Analysis</span> <span class="tag">Python</span> <span class="tag">Flask</span> <span class="tag">React</span></p>
             <div class="links">
@@ -70,7 +108,7 @@
               </a>
             </div>
           </article>
-          <article class="card">
+          <article class="card" data-tags="ml data">
             <h3><a href="https://akann0.github.io/beat-the-books/" target="_blank" rel="noopener">Beat The Bookies</a></h3>
             <p>A couple of attempts at data-driven approaches to sports betting, for both soccer and the MLB.<span class="tag">Machine Learning</span> <span class="tag">Python</span> <span class="tag">Jupyter</span></p>
             <div class="links">
@@ -79,7 +117,7 @@
               </a>
             </div>
           </article>
-          <article class="card">
+          <article class="card" data-tags="swe">
             <h3><a href="https://akann0.github.io/guess-who/" target="_blank" rel="noopener">Personal Guess Who</a></h3>
             <p>Lightweight site to play a personalized "Guess Who" with friends. For privacy reasons, the interesting stuff is password-protected. <span class="tag">React</span></p>
             <div class="links">
@@ -88,7 +126,7 @@
               </a>
             </div>
           </article>
-          <article class="card">
+          <article class="card" data-tags="data ml">
             <h3><a href="https://github.com/akann0/soccer-stat-data-analysis" target="_blank" rel="noopener">Soccer Stat Data Analysis</a></h3>
             <p>Exploratory analysis of soccer statistics and trends. <span class="tag">Python</span> <span class="tag">Pandas</span> <span class="tag">Jupyter</span></p>
             <div class="links">
@@ -100,20 +138,20 @@
         </div>
         <h2>My First Loves - Very Old, Basic Personal Projects</h2>
         <div class="grid">
-          <article class="card">
-            <h3><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener"></a></h3>
+          <article class="card" data-tags="swe">
+            <h3><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener">My first Discord bot</a></h3>
             <p> A Discord bot made solely to remind my friend of Kylian Mbappe's 2021 Euro Penalty Miss whenever soccer was discussed in chat.
               Also added children's game Odds On as a functionality, and automatically added a laugh react at every your mom joke in chat. 
               <span class="tag">Python</span> <span class="tag">Discord.py</span></p>
           </article>
-          <article class="card">
+          <article class="card" data-tags="swe">
             <h3>Soccer GM</h3>
             <p>
               An attempt to remake quasi open-source zen.gm as a text-based soccer game (because that's all I knew). 
               I learned a very valuable lesson about having a backup save file online.  
               <span class="tag">Python</span></p>
           </article>
-          <article class="card">
+          <article class="card" data-tags="swe">
             <h3>King Of Tokyo</h3>
             <p> My very first project, a text-based version of board game King Of Tokyo.
               The code is safe and sound, somewhere locally on my very old laptop.
@@ -125,7 +163,7 @@
       <section id="education" class="section">
         <h2>Education</h2>
         <div class="timeline">
-          <div class="item">
+          <div class="item" data-tags="ml data">
             <div class="item-head">
               <strong>University of Washington</strong>
               <span>M.S. in Data Science</span>
@@ -135,7 +173,7 @@
               <li>Relevant coursework: Topics in Data Science, Probability and Statistics, Data Visualizations</li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" data-tags="swe ml data">
             <div class="item-head">
               <strong><a href="transcript.pdf" target="_blank" rel="noopener">University of California, San Diego</a></strong>
               <span>B.S. in Mathematics, Business Minor</span>
@@ -151,7 +189,7 @@
       <section id="experience" class="section">
         <h2>Experience</h2>
         <div class="timeline">
-          <div class="item">
+          <div class="item" data-tags="swe">
             <div class="item-head">
               <strong>Citmit, Inc.</strong>
               <span>Software Developer</span>
@@ -164,7 +202,7 @@
               <li>Top 10% in Y Combinator applicants; admitted to Microsoft for Startups.</li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" data-tags="data swe ml">
             <div class="item-head">
               <strong>DFSOPC — Daily Fantasy Sports</strong>
               <span>Bot Creator</span>
@@ -182,7 +220,7 @@
       <section id="class-projects" class="section">
         <h2>Class Projects</h2>
         <div class="timeline">
-          <div class="item">
+          <div class="item" data-tags="ml data">
             <div class="item-head">
               <strong><a href="https://github.com/ndamle2/COGS118BProject" target="_blank" rel="noopener">NFL Pre-Snap Predictions</a></strong>
               <span>Introduction to Machine Learning</span>
@@ -197,7 +235,7 @@
               </a>
             </div>
           </div>
-          <div class="item">
+          <div class="item" data-tags="swe">
             <div class="item-head">
               <strong>Horoscope App</strong>
               <span>Advanced Software Engineering</span>
@@ -208,7 +246,7 @@
               <li>Used pair programming to onboard teammates to unfamiliar web tech.</li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" data-tags="data">
             <div class="item-head">
               <strong>Studying the “Grammy Bump”</strong>
               <span>Data Science in Practice</span>
@@ -218,7 +256,7 @@
               <li>Used NumPy, Pandas, and Seaborn for analysis and visualization.</li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" data-tags="swe">
             <div class="item-head">
               <strong><a href="https://flapjs.web.app/" target="_blank" rel="noopener">Flap.js</a></strong>
               <span>Theory of Computability</span>
@@ -250,7 +288,7 @@
       </section>
 
       <section id="stories" class="section">
-        <h2>Stories</h2>
+        <h2>Personal Anecdotes</h2>
         <p>Coming soon!</p>
       </section>
 
