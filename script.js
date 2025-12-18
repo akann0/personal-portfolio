@@ -37,8 +37,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   if (!buttons.length) return;
   let active = '';
 
-  function apply(tag) {
-    // Set CSS variable for active role color on root
+  // setActiveRoleColor: Sets the CSS variable for the active role highlight.
+  function setActiveRoleColor(tag) {
     const roleToColorVar = {
       swe: 'var(--role-swe)',
       ml: 'var(--role-ml)',
@@ -46,27 +46,60 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       genai: 'var(--role-genai)'
     };
     document.documentElement.style.setProperty('--role-active', roleToColorVar[tag] || '');
+  }
 
+  // toggleSectionHighlights: Toggles section highlights while skipping general sections.
+  function toggleSectionHighlights(tag) {
     document.querySelectorAll('[data-tags]').forEach(el => {
-      const tokens = (el.dataset.tags || '').split(/\s+/).filter(Boolean);
-      // Avoid outlining the entire Technical Skills section
       if (el.id === 'skills') {
         el.classList.remove('highlight');
         return;
       }
-      if (tag && tokens.includes(tag)) {
-        el.classList.add('highlight');
-      } else {
+      if (el.matches('section.section')) {
         el.classList.remove('highlight');
+        return;
       }
+      const tokens = (el.dataset.tags || '').split(/\s+/).filter(Boolean);
+      if (tag && tokens.includes(tag)) el.classList.add('highlight');
+      else el.classList.remove('highlight');
     });
+  }
 
-    // Highlight matching skill chips too
+  // toggleSkillChips: Toggles highlight classes on skill chips.
+  function toggleSkillChips(tag) {
     document.querySelectorAll('.skill-chip').forEach(chip => {
       const tokens = (chip.dataset.tags || '').split(/\s+/).filter(Boolean);
       if (tag && tokens.includes(tag)) chip.classList.add('highlight');
       else chip.classList.remove('highlight');
     });
+  }
+
+  // reorderHighlightedItems: Moves highlighted cards/items to the top of their container.
+  function reorderHighlightedItems() {
+    document.querySelectorAll('.timeline, .grid').forEach(container => {
+      const items = Array.from(container.children);
+      if (!items.length) return;
+      const highlighted = [];
+      const normal = [];
+      items.forEach(item => {
+        const isFlagged = item.classList.contains('highlight') || item.classList.contains('highlight-skill');
+        if (isFlagged) highlighted.push(item);
+        else normal.push(item);
+      });
+      if (!highlighted.length) return;
+      const fragment = document.createDocumentFragment();
+      highlighted.forEach(node => fragment.appendChild(node));
+      normal.forEach(node => fragment.appendChild(node));
+      container.appendChild(fragment);
+    });
+  }
+
+  // apply: Applies the selected filter tag and reorders highlighted sections.
+  function apply(tag) {
+    setActiveRoleColor(tag);
+    toggleSectionHighlights(tag);
+    toggleSkillChips(tag);
+    reorderHighlightedItems();
   }
 
   buttons.forEach(btn => {

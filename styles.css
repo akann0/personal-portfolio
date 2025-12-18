@@ -91,6 +91,9 @@ body {
 .card p { margin: 0; color: var(--muted); }
 .tag { display: inline-block; margin-left: .5rem; padding: .15rem .4rem; background: rgba(124,58,237,.15); color: #c4b5fd; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
 
+.tags-row { margin-top: 0.5rem; }
+.tags-row .tag:first-child { margin-left: 0; }
+
 /* Highlighting */
 .highlight { box-shadow: 0 0 0 2px color-mix(in oklab, var(--role-active, var(--gold)) 35%, transparent); border-color: var(--role-active, var(--gold)) !important; }
 
@@ -188,6 +191,3 @@ body {
 @media (prefers-color-scheme: dark) {
   :root:not(.light) { color-scheme: dark; }
 }
-
-
-

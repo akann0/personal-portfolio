@@ -19,7 +19,6 @@
         <nav class="nav" aria-label="Primary">
           <button id="themeToggle" class="btn btn-ghost" aria-pressed="false" aria-label="Toggle dark mode">🌓</button>
           <a href="#skills">Skills</a>
-          <a href="#class-projects">Class Projects</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
@@ -101,25 +100,44 @@
         </div>
       </section>
 
-      <section id="class-projects" class="section">
-        <h2>Class Projects</h2>
-        <div class="timeline">
-          <div class="item" data-tags="ml data">
+      <section id="projects" class="section" data-tags="swe ml data genai">
+        <h2>Projects</h2>
+        <div class="projects-group">
+          <h3>Class Projects</h3>
+          <div class="timeline">
+          <div class="item" data-tags="data genai" data-skills="Python, React, Pandas, Cursor Code">
+            <div class="item-head">
+              <strong><a href="https://ai-vs-dot-com.vercel.app/" target="_blank" rel="noopener">The Bigger Short </a></strong>
+              <span>Data Visualizations</span>
+            </div>
+            <ul>
+              <li>Interactive dashboard comparing the current AI boom with the Dot-com bubble using macroeconomic data and valuation metrics.</li>
+            </ul>
+            <p class="tags-row"><span class="tag">Python</span> <span class="tag">React</span> <span class="tag">Pandas</span> <span class="tag">Cursor Code</span></p>
+            <div class="links">
+              <a class="link-pill" href="https://github.com/akann0/ai-vs-dot-com" target="_blank" rel="noopener" aria-label="GitHub repository">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="item" data-tags="ml data" data-skills="Python, NumPy/Pandas, SciKit ML">
             <div class="item-head">
               <strong>NFL Pre-Snap Predictions</strong>
               <span>Introduction to Machine Learning</span>
             </div>
             <ul>
-              <li>Showed how pre-snap indicators can be used predictively on real NFL data.</li>
-              <li>Implemented Linear Regression and Random Forest models; presented findings via video to a non-expert audience.</li>
+              <li>Showed how pre-snap indicators can be used predictively on real NFL data, by attempting to predict binary outcomes such as run/pass, left/right, and success/failure. </li>
+              <li>Implemented Linear Regression and Random Forest models on real data provided by the NFL's Big Data Bowl. </li>
+              <li>Presented findings via video to a non-expert audience.</li>
             </ul>
+            <p class="tags-row"><span class="tag">Python</span> <span class="tag">NumPy/Pandas</span> <span class="tag">SciKit ML</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/ndamle2/COGS118BProject" target="_blank" rel="noopener" aria-label="GitHub repository">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
               </a>
             </div>
           </div>
-          <div class="item" data-tags="swe">
+          <div class="item" data-tags="swe" data-skills="JavaScript, HTML/CSS, React, Selenium">
             <div class="item-head">
               <strong><a href="https://stephentan12.github.io/Horoscope-Team-5/source/horoscope/pages/horoscope.html" target="_blank" rel="noopener">Horoscope App</a></strong>
               <span>Advanced Software Engineering</span>
@@ -129,13 +147,14 @@
               <li>Built 5 new webpages and oversaw CI/CD pipeline and Selenium testing.</li>
               <li>Used pair programming to onboard teammates to unfamiliar web tech.</li>
             </ul>
+            <p class="tags-row"><span class="tag">JavaScript</span> <span class="tag">HTML/CSS</span> <span class="tag">React</span> <span class="tag">Selenium</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/StephenTan12/Horoscope-Team-5" target="_blank" rel="noopener" aria-label="GitHub repository">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
               </a>
             </div>
           </div>
-          <div class="item" data-tags="data">
+          <div class="item" data-tags="data" data-skills="Python, NumPy/Pandas, Seaborn">
             <div class="item-head">
               <strong>Studying the “Grammy Bump”</strong>
               <span>Data Science in Practice</span>
@@ -144,8 +163,9 @@
               <li>Analyzed whether a Grammy win affects song popularity using Billboard data.</li>
               <li>Used NumPy, Pandas, and Seaborn for analysis and visualization.</li>
             </ul>
+            <p class="tags-row"><span class="tag">Python</span> <span class="tag">NumPy/Pandas</span> <span class="tag">Seaborn</span></p>
           </div>
-          <div class="item" data-tags="swe">
+          <div class="item" data-tags="swe" data-skills="JavaScript, HTML/CSS">
             <div class="item-head">
               <strong><a href="https://flapjs.web.app/" target="_blank" rel="noopener">Flap.js</a></strong>
               <span>Theory of Computability</span>
@@ -155,13 +175,14 @@
               <li>Led a team of three to overhaul the interface using HTML, CSS, and JavaScript.</li>
               <li>Collaborated with the professor and graduate leads; learned best coding practices.</li>
             </ul>
+            <p class="tags-row"><span class="tag">JavaScript</span> <span class="tag">HTML/CSS</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/flapjs/vanilla" target="_blank" rel="noopener" aria-label="GitHub repository">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
               </a>
             </div>
           </div>
-          <div class="item" data-tags="swe">
+          <div class="item" data-tags="swe" data-skills="JavaScript, HTML/CSS">
             <div class="item-head">
               <strong><a href="https://cse110-sp23-group15.github.io/cse110-sp23-group15/fortunetelling/index.html" target="_blank" rel="noopener">Noodle Horoscope</a></strong>
               <span>Software Engineering</span>
@@ -171,55 +192,89 @@
               <li>Helped build a user-friendly, fun web app to give users a horoscope.</li>
               <li>Built the database and designed and implemented multiple pages.</li>
             </ul>
+            <p class="tags-row"><span class="tag">JavaScript</span> <span class="tag">HTML/CSS</span></p>
             <div class="links">
               <a class="link-pill" href="https://github.com/cse110-sp23-group15" target="_blank" rel="noopener" aria-label="GitHub organization">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
               </a>
             </div>
           </div>
+          </div>
         </div>
-      </section>
-
-      <section id="projects" class="section">
-        <h2>Some Passion Projects to Demonstrate My Skills</h2>
-        <div class="grid">
-          <article class="card" data-tags="ml data swe genai">
-            <h3><a href="https://akann0.github.io/election-of-our-lifetime-frontend/" target="_blank" rel="noopener">Election of Our Lifetime</a></h3>
-            <p>Explores sentiment from Reddit headlines using word vectorization. Purely for entertainment purposes. <span class="tag">Sentiment Analysis</span> <span class="tag">Python</span> <span class="tag">Flask</span> <span class="tag">React</span> <span class="tag">Cursor</span></p>
-            <div class="links">
-              <a class="link-pill" href="https://github.com/akann0/election-of-our-lifetime-frontend" target="_blank" rel="noopener" aria-label="GitHub repository">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-              </a>
+        <div class="projects-group">
+          <h3>Personal Projects & First Loves</h3>
+          <div class="timeline">
+            <div class="item" data-tags="ml data swe genai" data-skills="Python, React, Flask">
+              <div class="item-head">
+                <strong><a href="https://akann0.github.io/election-of-our-lifetime-frontend/" target="_blank" rel="noopener">Election of Our Lifetime</a></strong>
+              </div>
+              <p>Explores sentiment from Reddit headlines using word vectorization. Purely for entertainment purposes. <span class="tag">Sentiment Analysis</span> <span class="tag">Python</span> <span class="tag">Flask</span> <span class="tag">React</span> <span class="tag">Cursor</span></p>
+              <div class="links">
+                <a class="link-pill" href="https://github.com/akann0/election-of-our-lifetime-frontend" target="_blank" rel="noopener" aria-label="GitHub repository">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                </a>
+              </div>
             </div>
-          </article>
-          <article class="card" data-tags="ml data genai">
-            <h3><a href="https://akann0.github.io/beat-the-books/" target="_blank" rel="noopener">Beat The Bookies</a></h3>
-            <p>A couple of attempts at data-driven approaches to sports betting, for both soccer and the MLB.
-              <span class="tag">Machine Learning</span> <span class="tag">Python</span> <span class="tag">Jupyter</span> <span class="tag">NumPy/Pandas</span> <span class="tag">SciKit ML</span> <span class="tag">Cursor</span></p>
-            <div class="links">
-              <a class="link-pill" href="https://github.com/akann0/beat-the-books" target="_blank" rel="noopener" aria-label="GitHub repository">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-              </a>
+            <div class="item" data-tags="ml data genai" data-skills="Python, NumPy/Pandas, SciKit ML">
+              <div class="item-head">
+                <strong><a href="https://akann0.github.io/beat-the-books/" target="_blank" rel="noopener">Beat The Bookies</a></strong>
+              </div>
+              <p>A couple of attempts at data-driven approaches to sports betting, for both soccer and the MLB.
+                <span class="tag">Machine Learning</span> <span class="tag">Python</span> <span class="tag">Jupyter</span> <span class="tag">NumPy/Pandas</span> <span class="tag">SciKit ML</span> <span class="tag">Cursor</span></p>
+              <div class="links">
+                <a class="link-pill" href="https://github.com/akann0/beat-the-books" target="_blank" rel="noopener" aria-label="GitHub repository">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                </a>
+              </div>
             </div>
-          </article>
-          <article class="card" data-tags="swe">
-            <h3><a href="https://akann0.github.io/guess-who/" target="_blank" rel="noopener">Personal Guess Who</a></h3>
-            <p>Lightweight site to play a personalized "Guess Who" with friends. For privacy reasons, the interesting stuff is password-protected. <span class="tag">React</span></p>
-            <div class="links">
-              <a class="link-pill" href="https://github.com/akann0/guess-who" target="_blank" rel="noopener" aria-label="GitHub repository">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-              </a>
+            <div class="item" data-tags="swe" data-skills="React, JavaScript">
+              <div class="item-head">
+                <strong><a href="https://akann0.github.io/guess-who/" target="_blank" rel="noopener">Personal Guess Who</a></strong>
+              </div>
+              <p>Lightweight site to play a personalized "Guess Who" with friends. For privacy reasons, the interesting stuff is password-protected. <span class="tag">React</span></p>
+              <div class="links">
+                <a class="link-pill" href="https://github.com/akann0/guess-who" target="_blank" rel="noopener" aria-label="GitHub repository">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                </a>
+              </div>
             </div>
-          </article>
-          <article class="card" data-tags="data ml">
-            <h3><a href="https://github.com/akann0/soccer-stat-data-analysis" target="_blank" rel="noopener">Soccer Stat Data Analysis</a></h3>
-            <p>Exploratory analysis of soccer statistics and trends. <span class="tag">Python</span> <span class="tag">Pandas</span> <span class="tag">Jupyter</span></p>
-            <div class="links">
-              <a class="link-pill" href="https://github.com/akann0/soccer-stat-data-analysis" target="_blank" rel="noopener" aria-label="GitHub repository">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-              </a>
+            <div class="item" data-tags="data ml" data-skills="Python, NumPy/Pandas">
+              <div class="item-head">
+                <strong><a href="https://github.com/akann0/soccer-stat-data-analysis" target="_blank" rel="noopener">Soccer Stat Data Analysis</a></strong>
+              </div>
+              <p>Exploratory analysis of soccer statistics and trends. <span class="tag">Python</span> <span class="tag">Pandas</span> <span class="tag">Jupyter</span></p>
+              <div class="links">
+                <a class="link-pill" href="https://github.com/akann0/soccer-stat-data-analysis" target="_blank" rel="noopener" aria-label="GitHub repository">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                </a>
+              </div>
             </div>
-          </article>
+            <div class="item" data-tags="swe" data-skills="Python">
+              <div class="item-head">
+                <strong><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener">My first Discord bot</a></strong>
+              </div>
+              <p> A Discord bot made solely to remind my friend of Kylian Mbappe's 2021 Euro Penalty Miss whenever soccer was discussed in chat.
+                Also added children's game Odds On as a functionality, and automatically added a laugh react at every your mom joke in chat. 
+                <span class="tag">Python</span> <span class="tag">Discord.py</span></p>
+            </div>
+            <div class="item" data-tags="swe" data-skills="Python">
+              <div class="item-head">
+                <strong>Soccer GM</strong>
+              </div>
+              <p>
+                An attempt to remake quasi open-source zen.gm as a text-based soccer game (because that's all I knew). 
+                I learned a very valuable lesson about having a backup save file online.  
+                <span class="tag">Python</span></p>
+            </div>
+            <div class="item" data-tags="swe" data-skills="Python">
+              <div class="item-head">
+                <strong>King Of Tokyo</strong>
+              </div>
+              <p> My very first project, a text-based version of board game King Of Tokyo.
+                The code is safe and sound, somewhere locally on my very old laptop.
+                <span class="tag">Python</span></p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -280,33 +335,8 @@
         </div>
       </section>
 
-      <section id="first-loves" class="section">
-        <h2>My First Loves - Very Old, Basic Personal Projects</h2>
-        <div class="grid">
-          <article class="card" data-tags="swe">
-            <h3><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener">My first Discord bot</a></h3>
-            <p> A Discord bot made solely to remind my friend of Kylian Mbappe's 2021 Euro Penalty Miss whenever soccer was discussed in chat.
-              Also added children's game Odds On as a functionality, and automatically added a laugh react at every your mom joke in chat. 
-              <span class="tag">Python</span> <span class="tag">Discord.py</span></p>
-          </article>
-          <article class="card" data-tags="swe">
-            <h3>Soccer GM</h3>
-            <p>
-              An attempt to remake quasi open-source zen.gm as a text-based soccer game (because that's all I knew). 
-              I learned a very valuable lesson about having a backup save file online.  
-              <span class="tag">Python</span></p>
-          </article>
-          <article class="card" data-tags="swe">
-            <h3>King Of Tokyo</h3>
-            <p> My very first project, a text-based version of board game King Of Tokyo.
-              The code is safe and sound, somewhere locally on my very old laptop.
-              <span class="tag">Python</span></p>
-          </article>
-        </div>
-      </section>
-
       <section id="achievements" class="section">
-        <h2>Odd Jobs, Community Involvement, and other fun things I've done</h2>
+        <h2>Things About Me You Might Find Interesting</h2>
         <ul class="list">
           <li>Recruiting & Social Coordinator, for three time national champions UCSD Club Water Polo (2023–2025)</li>
           <li>Assistant Water Polo Coach (High School), Fall 2025</li>
@@ -317,14 +347,9 @@
       </section>
 
       <section id="stories" class="section">
-        <h2>Coding Related Anecdotes</h2>
-        <p><em>coming soon</em></p>
-        <!-- <p>Deleting the entire codebase for the Soccer GM project because I didn't know how to save it online.</p>
-        <p>Coming in 9th place as a solo participant in a 56-team hackathon, and crashing the server due to an unresolved infinite loop.</p>
-        <p>Finishing in last place in my first data science hackathon because of a scaling error despite having the highest correlation score of all participants.</p>
-        <p>Passed the SOA Probability Exam (because why not)</p>
-        </p> -->
-      </section>
+        <h2>A compilation of personal thoughts and life advice</h2>
+        <p><em>If any of my MIHS Water Polo athletes found this page, this is especially for you.</em></p>
+
 
       <section id="contact" class="section">
         <h2>Contact</h2>
@@ -341,5 +366,3 @@
     <script src="script.js"></script>
   </body>
   </html>
-
-
