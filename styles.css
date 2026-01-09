@@ -212,10 +212,13 @@ body.show-hidden-projects #projects .item.hidden-by-filter { display: block; }
   overflow: hidden;
   transition: max-height .35s ease, opacity .35s ease;
 }
-#projects .item:hover p:not(.tags-row),
-#projects .item:focus-within p:not(.tags-row) {
-  max-height: 200px;
-  opacity: 1;
+
+@media (hover: hover) and (pointer: fine) {
+  #projects .item:hover p:not(.tags-row),
+  #projects .item:focus-within p:not(.tags-row) {
+    max-height: 200px;
+    opacity: 1;
+  }
 }
 #projects .item.expanded p:not(.tags-row) {
   max-height: 200px;
