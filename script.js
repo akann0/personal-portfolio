@@ -222,3 +222,18 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     chip.addEventListener('click', (e) => { e.preventDefault(); });
   });
 })();
+
+(function handleMobileProjectDescription() {
+  // handleMobileProjectDescription: toggles project descriptions on touch devices
+  if (!window.matchMedia('(hover: none)').matches) return;
+  const items = document.querySelectorAll('#projects .timeline .item');
+  if (!items.length) return;
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(other => {
+        if (other !== item) other.classList.remove('expanded');
+      });
+      item.classList.toggle('expanded');
+    });
+  });
+})();

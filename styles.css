@@ -217,6 +217,10 @@ body.show-hidden-projects #projects .item.hidden-by-filter { display: block; }
   max-height: 200px;
   opacity: 1;
 }
+#projects .item.expanded p:not(.tags-row) {
+  max-height: 200px;
+  opacity: 1;
+}
 
 .site-footer { padding: 2rem 0 4rem; border-top: 1px solid var(--border); margin-top: 2rem; text-align: center; color: var(--muted); }
 
