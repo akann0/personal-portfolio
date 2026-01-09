@@ -36,6 +36,9 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   const buttons = document.querySelectorAll('.filter-btn');
   if (!buttons.length) return;
   let active = '';
+  const projectItems = document.querySelectorAll('#projects .timeline .item');
+  const viewMore = document.getElementById('projectViewMore');
+  const viewMoreSummary = viewMore?.querySelector('summary');
 
   // setActiveRoleColor: Sets the CSS variable for the active role highlight.
   function setActiveRoleColor(tag) {
@@ -94,11 +97,49 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     });
   }
 
+  // updateProjectVisibility: Hide projects that fall outside the selected focus.
+  function updateProjectVisibility(tag) {
+    let hasHidden = false;
+    if (!projectItems.length) return false;
+    projectItems.forEach(item => {
+      const tokens = (item.dataset.tags || '').split(/\s+/).filter(Boolean);
+      const matches = !tag || tokens.includes(tag);
+      const shouldHide = Boolean(tag) && !matches;
+      item.classList.toggle('hidden-by-filter', shouldHide);
+      if (shouldHide) hasHidden = true;
+    });
+    return hasHidden;
+  }
+
+  // syncViewMoreToggle: Show or hide the view-more dropdown.
+  function setViewMoreLabel(isOpen) {
+    if (!viewMoreSummary) return;
+    viewMoreSummary.textContent = isOpen ? 'See less projects ↑' : 'See more projects ↓';
+  }
+
+  function syncViewMoreToggle(hasHidden) {
+    if (!viewMore) return;
+    viewMore.hidden = !hasHidden;
+    if (viewMore.open) viewMore.open = false;
+    setViewMoreLabel(false);
+  }
+
+  if (viewMore) {
+    viewMore.addEventListener('toggle', () => {
+      document.body.classList.toggle('show-hidden-projects', viewMore.open);
+      setViewMoreLabel(viewMore.open);
+    });
+    setViewMoreLabel(false);
+  }
+
   // apply: Applies the selected filter tag and reorders highlighted sections.
   function apply(tag) {
     setActiveRoleColor(tag);
     toggleSectionHighlights(tag);
     toggleSkillChips(tag);
+    const hiddenProjects = updateProjectVisibility(tag);
+    syncViewMoreToggle(hiddenProjects);
+    if (!tag) document.body.classList.remove('show-hidden-projects');
     reorderHighlightedItems();
   }
 
