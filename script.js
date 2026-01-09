@@ -37,8 +37,14 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   if (!buttons.length) return;
   let active = '';
   const projectItems = document.querySelectorAll('#projects .timeline .item');
+  const containers = document.querySelectorAll('.timeline, .grid');
   const viewMore = document.getElementById('projectViewMore');
   const viewMoreSummary = viewMore?.querySelector('summary');
+  const orderMap = new Map();
+
+  containers.forEach(container => {
+    orderMap.set(container, Array.from(container.children));
+  });
 
   // setActiveRoleColor: Sets the CSS variable for the active role highlight.
   function setActiveRoleColor(tag) {
@@ -78,18 +84,19 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
   // reorderHighlightedItems: Moves highlighted cards/items to the top of their container.
-  function reorderHighlightedItems() {
-    document.querySelectorAll('.timeline, .grid').forEach(container => {
-      const items = Array.from(container.children);
-      if (!items.length) return;
+  function reorderHighlightedItems(tag) {
+    orderMap.forEach((original, container) => {
+      if (!tag) {
+        original.forEach(item => container.appendChild(item));
+        return;
+      }
       const highlighted = [];
       const normal = [];
-      items.forEach(item => {
-        const isFlagged = item.classList.contains('highlight') || item.classList.contains('highlight-skill');
-        if (isFlagged) highlighted.push(item);
+      original.forEach(item => {
+        const tokens = (item.dataset.tags || '').split(/\s+/).filter(Boolean);
+        if (tokens.includes(tag)) highlighted.push(item);
         else normal.push(item);
       });
-      if (!highlighted.length) return;
       const fragment = document.createDocumentFragment();
       highlighted.forEach(node => fragment.appendChild(node));
       normal.forEach(node => fragment.appendChild(node));
@@ -100,11 +107,13 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   // updateProjectVisibility: Hide projects that fall outside the selected focus.
   function updateProjectVisibility(tag) {
     let hasHidden = false;
-    if (!projectItems.length) return false;
+    const hasItems = projectItems.length;
+    if (!hasItems) return false;
     projectItems.forEach(item => {
       const tokens = (item.dataset.tags || '').split(/\s+/).filter(Boolean);
-      const matches = !tag || tokens.includes(tag);
-      const shouldHide = Boolean(tag) && !matches;
+      const defaultHide = item.dataset.defaultHidden === 'true';
+      const matches = tokens.includes(tag);
+      const shouldHide = Boolean(tag) ? !matches : defaultHide;
       item.classList.toggle('hidden-by-filter', shouldHide);
       if (shouldHide) hasHidden = true;
     });
@@ -140,7 +149,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     const hiddenProjects = updateProjectVisibility(tag);
     syncViewMoreToggle(hiddenProjects);
     if (!tag) document.body.classList.remove('show-hidden-projects');
-    reorderHighlightedItems();
+    reorderHighlightedItems(tag);
   }
 
   buttons.forEach(btn => {
@@ -152,6 +161,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       apply(next);
     });
   });
+
+  apply('');
 })();
 
 // Skill chip details viewer
