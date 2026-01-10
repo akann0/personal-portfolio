@@ -223,10 +223,10 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
-(function handleMobileProjectDescription() {
-  // handleMobileProjectDescription: toggles project descriptions on touch devices
+(function handleMobileDescriptionToggle() {
+  // handleMobileDescriptionToggle: toggles descriptions for expandable cards on touch devices
   if (!window.matchMedia('(hover: none)').matches) return;
-  const items = document.querySelectorAll('#projects .timeline .item');
+  const items = document.querySelectorAll('#projects .timeline .item, .timeline .item.collapsible');
   if (!items.length) return;
   items.forEach(item => {
     item.addEventListener('click', () => {
