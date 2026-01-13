@@ -213,6 +213,24 @@ body.show-hidden-projects #projects .item.hidden-by-filter { display: block; }
   transition: max-height .35s ease, opacity .35s ease;
 }
 
+/* Mobile expand indicator arrow */
+.expand-indicator {
+  display: none;
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: transform 0.3s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .expand-indicator {
+    display: inline-block;
+  }
+  #projects .item.expanded .expand-indicator {
+    transform: rotate(180deg);
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   #projects .item:hover p:not(.tags-row),
   #projects .item:focus-within p:not(.tags-row) {

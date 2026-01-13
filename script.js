@@ -223,11 +223,12 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 })();
 
+// handleMobileDescriptionToggle: toggles descriptions and arrows on touch devices
 (function handleMobileDescriptionToggle() {
-  // handleMobileDescriptionToggle: toggles descriptions for expandable cards on touch devices
   if (!window.matchMedia('(hover: none)').matches) return;
   const items = document.querySelectorAll('#projects .timeline .item, .timeline .item.collapsible');
   if (!items.length) return;
+  addExpandIndicators();
   items.forEach(item => {
     item.addEventListener('click', () => {
       items.forEach(other => {
@@ -237,3 +238,17 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     });
   });
 })();
+
+// addExpandIndicators: adds down arrow indicators to project items on mobile
+function addExpandIndicators() {
+  const projectItems = document.querySelectorAll('#projects .timeline .item');
+  projectItems.forEach(item => {
+    const head = item.querySelector('.item-head');
+    if (!head) return;
+    const indicator = document.createElement('span');
+    indicator.className = 'expand-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    indicator.textContent = '▼';
+    head.appendChild(indicator);
+  });
+}
