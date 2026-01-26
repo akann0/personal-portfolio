@@ -35,7 +35,7 @@ body {
   line-height: 1.6;
 }
 
-.container { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 1rem; text-align: center; }
 
 .skip-to-content {
   position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden;
@@ -78,8 +78,8 @@ body {
 .hero { padding: 5rem 0 2rem; }
 .hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .5rem; }
 .accent { color: var(--accent); }
-.lead { font-size: 1.125rem; color: var(--muted); max-width: 62ch; }
-.actions { display: flex; gap: .75rem; margin-top: 1rem; }
+.lead { font-size: 1.125rem; color: var(--muted); max-width: 62ch; margin-left: auto; margin-right: auto; }
+.actions { display: flex; gap: .75rem; margin-top: 1rem; justify-content: center; flex-wrap: wrap; }
 
 .section { padding: 3rem 0 1rem; border-top: 1px solid var(--border); }
 .section h2 { margin: 0 0 1rem; font-size: 1.5rem; }
@@ -92,16 +92,17 @@ body {
 .card p { margin: 0; color: var(--muted); }
 .tag { display: inline-block; margin-left: .5rem; padding: .15rem .4rem; background: rgba(124,58,237,.15); color: #c4b5fd; border: 1px solid var(--border); border-radius: 6px; font-size: .8rem; }
 
-.tags-row { margin-top: 0.5rem; }
+.tags-row { margin-top: 0.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
 .tags-row .tag:first-child { margin-left: 0; }
+.tags-row .tag { margin-left: 0; }
 
 /* Highlighting */
 .highlight { box-shadow: 0 0 0 2px color-mix(in oklab, var(--role-active, var(--gold)) 35%, transparent); border-color: var(--role-active, var(--gold)) !important; }
 
 /* Skills chips */
-.skills-groups { display: grid; gap: 1rem; }
+.skills-groups { display: grid; gap: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 .skills-group h3 { margin: 0; font-size: 1rem; color: var(--muted); }
-.skills-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.skills-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; justify-content: center; }
 .skill-chip {
   display: inline-flex; align-items: center; gap: .35rem;
   padding: .15rem .35rem; border-radius: 6px;
@@ -170,17 +171,17 @@ body {
   100% { transform: translateX(220%) rotate(25deg); }
 }
 
-.links { margin-top: .6rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.links { margin-top: .6rem; display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
 .link-pill { display: inline-block; padding: .25rem .5rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); background: transparent; font-size: .85rem; }
 .link-pill:hover { background: var(--card); }
 .link-pill svg { width: 16px; height: 16px; display: block; }
 
-.list { padding-left: 1rem; }
+.list { padding-left: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; }
 .list li { margin: .25rem 0; }
 
-.timeline { display: grid; gap: 1rem; }
-.item { padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
-.item-head { display: flex; gap: .75rem; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+.timeline { display: grid; gap: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+.item { padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+.item-head { display: flex; gap: .75rem; align-items: baseline; justify-content: center; flex-wrap: wrap; }
 .muted { color: var(--muted); }
 
 .view-more {
@@ -272,6 +273,9 @@ body.show-hidden-projects #projects .item.hidden-by-filter { display: block; }
   border-radius: 16px;
   margin-top: 2rem;
   padding: 2rem !important;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-ideas h2 { color: #fde047; }
 .ideas-intro { color: var(--muted); margin-bottom: 1rem; }
@@ -280,6 +284,10 @@ body.show-hidden-projects #projects .item.hidden-by-filter { display: block; }
   padding: 0;
   display: grid;
   gap: 0.75rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 .ideas-list li {
   padding: 0.75rem 1rem;
