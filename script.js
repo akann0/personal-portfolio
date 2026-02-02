@@ -14,6 +14,67 @@
   }
 })();
 
+// Category selection and section visibility
+(function () {
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const focusSelector = document.getElementById('focusSelector');
+  const sections = document.querySelectorAll('.section');
+  
+  // Map categories to section IDs
+  const categoryMap = {
+    projects: ['projects'],
+    experience: ['experience'],
+    education: ['education'],
+    other: ['skills', 'achievements', 'stories', 'project-ideas', 'contact']
+  };
+  
+  let activeCategory = '';
+  
+  // showSections: Shows sections for the selected category
+  function showSections(category) {
+    sections.forEach(section => {
+      const sectionIds = categoryMap[category] || [];
+      if (sectionIds.includes(section.id)) {
+        section.classList.add('visible');
+      } else {
+        section.classList.remove('visible');
+      }
+    });
+  }
+  
+  // handleCategoryClick: Handles category button clicks
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category;
+      activeCategory = category;
+      
+      // Update button states
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Show focus selector
+      if (focusSelector) focusSelector.hidden = false;
+      
+      // Show relevant sections (but don't scroll yet)
+      showSections(category);
+    });
+  });
+  
+  // Scroll down only after clicking a focus/specialization
+  const filterBtns = document.querySelectorAll('.focus-selector .filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Scroll to content smoothly after selecting focus
+      const firstSection = document.querySelector('.section.visible');
+      if (firstSection) {
+        setTimeout(() => {
+          firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
+  });
+})();
+
 // Smooth scroll for same-page nav
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {

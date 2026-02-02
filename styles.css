@@ -75,14 +75,46 @@ body {
 .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
 .btn-ideas { background: linear-gradient(135deg, #fde047 0%, #facc15 100%); color: #1c1917; border: 1px solid #ca8a04; }
 
-.hero { padding: 5rem 0 2rem; }
+.hero { padding: 5rem 0 2rem; min-height: calc(100vh - 60px); display: flex; flex-direction: column; justify-content: center; }
 .hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .5rem; }
 .accent { color: var(--accent); }
 .lead { font-size: 1.125rem; color: var(--muted); max-width: 62ch; margin-left: auto; margin-right: auto; }
 .actions { display: flex; gap: .75rem; margin-top: 1rem; justify-content: center; flex-wrap: wrap; }
 
-.section { padding: 3rem 0 1rem; border-top: 1px solid var(--border); }
+/* Category & Focus Selectors */
+.selector-container { margin-top: 2rem; }
+.selector-label { color: var(--muted); margin-bottom: 0.75rem; font-size: 1rem; }
+.category-selector { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.category-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); }
+.category-btn:hover { border-color: var(--brand); background: color-mix(in oklab, var(--brand) 15%, var(--card)); }
+.category-btn.active { border-color: var(--brand); background: var(--brand); color: white; }
+.focus-selector { margin-top: 1.5rem; }
+.focus-buttons { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+.filter-btn[data-filter=""] { background: #1a1a1a; border-color: #333; color: var(--text); }
+.filter-btn[data-filter=""]:hover { background: #2a2a2a; }
+.filter-btn[data-filter=""][aria-pressed="true"] { outline-color: #666; }
+.quick-links { margin-top: 2rem; }
+
+/* Hide all content sections by default */
+.section { 
+  display: none; 
+  padding: 3rem 0 1rem; 
+  border-top: 1px solid var(--border);
+  animation: fadeIn 0.4s ease;
+}
+.section.visible { display: block; }
 .section h2 { margin: 0 0 1rem; font-size: 1.5rem; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Focus selector animation */
+.focus-selector {
+  animation: fadeIn 0.3s ease;
+}
+
 .meta { padding-left: 1rem; color: var(--muted); }
 .meta li { margin: .25rem 0; }
 

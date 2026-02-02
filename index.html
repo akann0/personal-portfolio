@@ -10,6 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NHK7ZSR4EW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NHK7ZSR4EW');
+</script>
   <body>
     <a class="skip-to-content" href="#main">Skip to content</a>
 
@@ -34,15 +43,31 @@
         <h1>Hi, I'm Aaron Kann<span class="accent">.</span></h1>
         <p class="lead">I'm currently a Master's student at the University of Washington studying Data Science.
           I'm passionate about working with numbers, telling stories, building fun things, and fostering community.
-          I'm currently looking for a internships in the field of Data Science, Machine Learning, or Artificial Intelligence.
-          I pride myself on being someone who loves connnecting to new people, so please don't be afraid to reach out!
+          I'm currently looking for internships in the field of Data Science, Machine Learning, or Artificial Intelligence.
+          I pride myself on being someone who loves connecting to new people, so please don't be afraid to reach out!
         </p>
-        <p>Click one of the buttons below to highlight my experiences that match a certain role:</p>
-        <div class="actions">
-          <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
-          <button class="btn filter-btn" data-filter="swe" aria-pressed="false">SWE</button>
-          <button class="btn filter-btn" data-filter="ml" aria-pressed="false">ML</button>
-          <button class="btn filter-btn" data-filter="genai" aria-pressed="false">Gen AI</button>
+        
+        <div class="selector-container">
+          <p class="selector-label">What would you like to see?</p>
+          <div class="category-selector">
+            <button class="btn category-btn" data-category="projects">Projects</button>
+            <button class="btn category-btn" data-category="experience">Experience</button>
+            <button class="btn category-btn" data-category="education">Education</button>
+            <button class="btn category-btn" data-category="other">Other</button>
+          </div>
+          
+          <div class="focus-selector" id="focusSelector" hidden>
+            <p class="selector-label">Filter by focus:</p>
+            <div class="focus-buttons">
+              <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
+              <button class="btn filter-btn" data-filter="swe" aria-pressed="false">SWE</button>
+              <button class="btn filter-btn" data-filter="ml" aria-pressed="false">ML</button>
+              <button class="btn filter-btn" data-filter="" aria-pressed="true">General View</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="quick-links">
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </section>
@@ -326,7 +351,7 @@
         <p><em>If any of my MIHS Water Polo athletes found this page, this is especially for you.</em></p>
       </section>
 
-      <section id="project-ideas" class="section section-ideas">
+      <section hidden id="project-ideas" class="section section-ideas">
         <h2>Project Ideas I'd Like to Build</h2>
         <p class="ideas-intro">Things I've either already started or would like to start:</p>
         <ul class="ideas-list">
