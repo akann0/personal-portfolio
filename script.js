@@ -11,10 +11,13 @@
     projects: ['projects'],
     experience: ['experience'],
     education: ['education'],
-    other: ['skills', 'achievements', 'stories', 'project-ideas', 'contact']
+    skills: ['skills'],
+    builds: ['building'],
+    other: ['achievements', 'stories', 'contact']
   };
 
   let activeCategory = '';
+  let pendingCategory = '';
   let isWarping = false;
 
   // createWarpOverlay: Creates the canvas for star-streak effect
@@ -60,16 +63,27 @@
     });
   }
 
+  function updateFocusVisibility() {
+    if (!focusSelector) return;
+    focusSelector.hidden = pendingCategory !== 'projects';
+  }
+
   // handleCategoryClick: Handles category button selection
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      activeCategory = btn.dataset.category;
+      pendingCategory = btn.dataset.category;
+      activeCategory = pendingCategory;
       categoryBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      if (focusSelector) focusSelector.hidden = false;
-      showSections(activeCategory);
+      updateFocusVisibility();
+      if (pendingCategory !== 'projects') {
+        if (window.resetSpecialization) window.resetSpecialization();
+        warpToContent();
+      }
     });
   });
+
+  updateFocusVisibility();
 
   // animateWarpStars: Draws streaking stars radiating from center
   function animateWarpStars(duration, onComplete) {
@@ -231,7 +245,7 @@
 
   // warpToContent: Full forward warp sequence
   function warpToContent() {
-    if (isWarping) return;
+    if (isWarping || !pendingCategory) return;
     isWarping = true;
 
     // Phase 1: Hero departs + star streaks begin
@@ -242,6 +256,8 @@
       hero.classList.add('warped');
       window.scrollTo(0, 0);
       if (mainEl) mainEl.classList.add('content-active');
+
+      showSections(pendingCategory);
 
       // Add arriving animation to visible sections
       sections.forEach(s => {
@@ -289,7 +305,9 @@
 
       // Reset category/focus state
       categoryBtns.forEach(b => b.classList.remove('active'));
+      pendingCategory = '';
       if (focusSelector) focusSelector.hidden = true;
+      updateFocusVisibility();
       activeCategory = '';
 
       setTimeout(() => {
@@ -303,12 +321,73 @@
   const filterBtns = document.querySelectorAll('.focus-selector .filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const firstSection = document.querySelector('.section.visible');
-      if (firstSection) {
+      if (pendingCategory === 'projects') {
         warpToContent();
       }
     });
   });
+
+  let teleportingLink = false;
+  const backupCard = document.createElement('div');
+  backupCard.className = 'contact-backup';
+  backupCard.innerHTML = `<strong>Still here?</strong><div>aaron@stevek.com</div><button type="button">Copy</button>`;
+  document.body.appendChild(backupCard);
+  const backupCopy = backupCard.querySelector('button');
+  backupCopy?.addEventListener('click', () => {
+    navigator.clipboard?.writeText('aaron@stevek.com');
+    backupCopy.textContent = 'Copied!';
+    setTimeout(() => { backupCopy.textContent = 'Copy'; }, 2000);
+  });
+  let backupTimeout;
+
+  function teleportToLink(href, target, rel) {
+    if (teleportingLink || isWarping) return;
+    teleportingLink = true;
+    applyTeleportFade();
+    animateWarpStars(1100, () => {
+      removeTeleportFade();
+      teleportingLink = false;
+      if (href.startsWith('mailto:')) {
+        showContactBackup();
+        navigator.clipboard?.writeText(href.replace('mailto:', ''));
+      }
+      if (target === '_blank') {
+        window.open(href, '_blank', rel || 'noopener');
+      } else {
+        window.location.href = href;
+      }
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || link.dataset.noTeleport === 'true') return;
+    e.preventDefault();
+    teleportToLink(href, link.target, link.rel);
+  });
+
+  function applyTeleportFade() {
+    hero?.classList.add('teleport-fading');
+    mainEl?.classList.add('teleport-fading');
+    sections.forEach(section => section.classList.add('teleport-fading'));
+    focusSelector?.classList?.add('teleport-fading');
+  }
+
+  function removeTeleportFade() {
+    hero?.classList.remove('teleport-fading');
+    mainEl?.classList.remove('teleport-fading');
+    sections.forEach(section => section.classList.remove('teleport-fading'));
+    focusSelector?.classList?.remove('teleport-fading');
+  }
+
+  function showContactBackup() {
+    backupCard.classList.add('visible');
+    clearTimeout(backupTimeout);
+    backupTimeout = setTimeout(() => backupCard.classList.remove('visible'), 6000);
+  }
 })();
 
 // Smooth scroll for same-page nav
@@ -327,6 +406,48 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // Footer year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Random cool link infrastructure
+(function setupRandomCoolLink() {
+  const button = document.getElementById('randomCoolBtn');
+  const description = document.getElementById('randomCoolDescription');
+  const endpoint = 'cool-links.json';
+  let portfolios = [];
+
+  async function loadCoolLinks() {
+    try {
+      const resp = await fetch(endpoint);
+      if (!resp.ok) throw new Error('Unable to load cool links');
+      portfolios = await resp.json();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function pickOne() {
+    if (!portfolios.length) return null;
+    const index = Math.floor(Math.random() * portfolios.length);
+    return portfolios[index];
+  }
+
+  function updateDescription(entry) {
+    if (!description) return;
+    description.textContent = entry
+      ? `${entry.title}${entry.description ? ` · ${entry.description}` : ''}`
+      : '';
+  }
+
+  if (!button) return;
+  button.addEventListener('click', async () => {
+    if (!portfolios.length) await loadCoolLinks();
+    const next = pickOne();
+    if (!next) return;
+    updateDescription(next);
+    window.open(next.url, '_blank', 'noopener');
+  });
+
+  loadCoolLinks();
+})();
 
 // Shooting star cursor trail effect using canvas
 (function() {
@@ -460,6 +581,70 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   drawTrail();
 })();
 
+(function galaxyShootingStars() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'galaxyShootingStars';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function spawnStar() {
+    const fromTop = Math.random() < 0.6;
+    const x = fromTop ? Math.random() * canvas.width : -20;
+    const y = fromTop ? -10 : Math.random() * canvas.height;
+    const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
+    stars.push({
+      x,
+      y,
+      angle,
+      length: Math.random() * 60 + 40,
+      speed: Math.random() * 2 + 1.2,
+      alpha: 1,
+      fade: 0.008 + Math.random() * 0.01,
+      hue: Math.random() > 0.7 ? 210 : 0
+    });
+  }
+
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (Math.random() < 0.03) spawnStar();
+
+    stars = stars.filter(s => s.alpha > 0);
+    for (const star of stars) {
+      star.x += Math.cos(star.angle) * star.speed;
+      star.y += Math.sin(star.angle) * star.speed;
+      star.alpha -= star.fade;
+
+      const tailX = star.x - Math.cos(star.angle) * star.length;
+      const tailY = star.y - Math.sin(star.angle) * star.length;
+
+      const alpha = Math.max(star.alpha, 0);
+      const color = star.hue === 210 ? 'rgba(147, 197, 253,' : 'rgba(255, 255, 255,';
+      ctx.strokeStyle = `${color}${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(star.x, star.y);
+      ctx.stroke();
+
+      ctx.fillStyle = `${color}${alpha})`;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(update);
+  }
+  update();
+})();
+
 // Category filter highlight
 (function () {
   const buttons = document.querySelectorAll('.filter-btn');
@@ -481,6 +666,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
       swe: 'var(--role-swe)',
       ml: 'var(--role-ml)',
       data: 'var(--role-data)',
+      play: 'var(--role-play)',
       genai: 'var(--role-genai)'
     };
     document.documentElement.style.setProperty('--role-active', roleToColorVar[tag] || '');

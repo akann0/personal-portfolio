@@ -37,6 +37,8 @@
             <button class="btn category-btn" data-category="projects">Projects</button>
             <button class="btn category-btn" data-category="experience">Experience</button>
             <button class="btn category-btn" data-category="education">Education</button>
+            <button class="btn category-btn" data-category="skills">Skills</button>
+            <button class="btn category-btn" data-category="builds">Workshop</button>
             <button class="btn category-btn" data-category="other">Other</button>
           </div>
           
@@ -46,13 +48,19 @@
               <button class="btn filter-btn" data-filter="data" aria-pressed="false">Data Science</button>
               <button class="btn filter-btn" data-filter="swe" aria-pressed="false">SWE</button>
               <button class="btn filter-btn" data-filter="ml" aria-pressed="false">ML</button>
+              <button class="btn filter-btn" data-filter="play" aria-pressed="false">Playground</button>
               <button class="btn filter-btn" data-filter="" aria-pressed="true">General View</button>
             </div>
           </div>
         </div>
         
         <div class="quick-links">
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="mailto:aaron@stevek.com">Email me</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aaron-kann" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="random-cool">
+            <button id="randomCoolBtn" class="btn btn-ghost" type="button">Link to something cool</button>
+            <p id="randomCoolDescription" class="random-cool-description"></p>
+          </div>
         </div>
       </section>
 
@@ -176,42 +184,46 @@
             </div>
           </div>
 
-          <div class="item" data-tags="" data-skills="React, JavaScript" data-default-hidden="true">
-            <div class="item-head">
-              <strong><a href="https://akann0.github.io/guess-who/" target="_blank" rel="noopener">Personal Guess Who</a></strong>
-            </div>
-            <p class="description">Lightweight site I built for freinds to play a personalized form of "Guess Who".</p>
-            <p class="tags-row"><span class="tag">React</span></p>
-            <div class="links">
-              <a class="link-pill" href="https://github.com/akann0/guess-who" target="_blank" rel="noopener" aria-label="GitHub repository">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
-              </a>
-            </div>
+        </div>
+        <div class="project-playground">
+          <div class="playground-header">
+            <h3>Playground</h3>
+            <p class="playground-subtitle">A shits-and-giggles corner for the builds that keep me smiling.</p>
           </div>
-
-          <div class="item" data-tags="swe" data-skills="Python" data-default-hidden="true">
-            <div class="item-head">
-              <strong><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener">My first Discord bot</a></strong>
+          <div class="timeline playground">
+            <div class="item" data-tags="play" data-skills="React, JavaScript" data-default-hidden="true">
+              <div class="item-head">
+                <strong><a href="https://akann0.github.io/guess-who/" target="_blank" rel="noopener">Personal Guess Who</a></strong>
+              </div>
+              <p class="description">Lightweight site I built for friends to play a personalized form of "Guess Who".</p>
+              <p class="tags-row"><span class="tag">React</span></p>
+              <div class="links">
+                <a class="link-pill" href="https://github.com/akann0/guess-who" target="_blank" rel="noopener" aria-label="GitHub repository">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                </a>
+              </div>
             </div>
-            <p class="description">My first Discord bot, originally made solely to remind my friend of Kylian Mbappe's 2021 Euro Penalty miss, but also added cutting-edge functionality 
-              such as children's game Odds On and a laugh react at every mention of "your mom".</p>
-            <p class="tags-row"><span class="tag">Python</span> <span class="tag">Discord.py</span></p>
-          </div>
-
-          <div class="item" data-tags="" data-skills="Python" data-default-hidden="true">
-            <div class="item-head">
-              <strong>Soccer GM</strong>
+            <div class="item" data-tags="play swe" data-skills="Python" data-default-hidden="true">
+              <div class="item-head">
+                <strong><a href="https://replit.com/@aaronk10/Discord-Bot#main.py" target="_blank" rel="noopener">My first Discord bot</a></strong>
+              </div>
+              <p class="description">My first Discord bot, originally made to remind a friend of Mbappé's penalty miss, but eventually added odds-on and a laugh react for "your mom".</p>
+              <p class="tags-row"><span class="tag">Python</span> <span class="tag">Discord.py</span></p>
             </div>
-            <p class="description">An attempt to remake quasi open-source zen.gm as a text-based soccer game (before I learned the art of WebDev). I learned a very valuable lesson about having a backup save file online...</p>
-            <p class="tags-row"><span class="tag">Python</span></p>
-          </div>
-
-          <div class="item" data-tags="" data-skills="Python" data-default-hidden="true">
-            <div class="item-head">
-              <strong>King Of Tokyo</strong>
+            <div class="item" data-tags="play" data-skills="Python" data-default-hidden="true">
+              <div class="item-head">
+                <strong>Soccer GM</strong>
+              </div>
+              <p class="description">Attempted to remake zen.gm as a text-based soccer game before I learned web dev. Lesson learned: keep a cloud save.</p>
+              <p class="tags-row"><span class="tag">Python</span></p>
             </div>
-            <p class="description">My very first project, a text-based version of board game King Of Tokyo. The code is safe and sound, somewhere locally on my very old laptop.</p>
-            <p class="tags-row"><span class="tag">Python</span></p>
+            <div class="item" data-tags="play" data-skills="Python" data-default-hidden="true">
+              <div class="item-head">
+                <strong>King Of Tokyo</strong>
+              </div>
+              <p class="description">My very first project — a text-based version of the board game King Of Tokyo. The code lives somewhere on an old laptop.</p>
+              <p class="tags-row"><span class="tag">Python</span></p>
+            </div>
           </div>
         </div>
         <details id="projectViewMore" class="view-more" hidden>
@@ -322,22 +334,19 @@
       <section id="achievements" class="section">
         <h2>Things About Me You Might Find Interesting</h2>
         <ul class="list">
-          <li>Recruiting & Social Coordinator, for three time national champions UCSD Club Water Polo (2023–2025)</li>
-          <li>Assistant Water Polo Coach (High School), Fall 2025</li>
-          <li>Member of the one and only UCSD Rec Trivia Tournament of Champions (2024)</li>
+          <li>Recruiting & Social Coordinator for three-time national champions UCSD Men's Club Water Polo (2023–2025)</li>
+          <li>Assistant Water Polo Coach, Mercer Island High School (Fall 2025)</li>
+          <li>Winning team member of the one and only UCSD Rec Trivia Tournament of Champions (2024)</li>
           <li>Volunteered abroad in Scotland for three weeks as a part of a social hostel on Loch Ness (2025)</li>
           <li>Marched in the Rose Parade as a part of my high school's marching band (2019)</li>
+          <li>Won a local Math Olympiad as an elementary school student (2013)</li>
         </ul>
       </section>
 
-      <section id="stories" class="section">
-        <h2><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank" rel="noopener">A Compilation of Personal Thoughts and Life Advice</a></h2>
-        <p><em>If any of my MIHS Water Polo athletes found this page, this is especially for you.</em></p>
-      </section>
 
-      <section hidden id="project-ideas" class="section section-ideas">
-        <h2>Project Ideas I'd Like to Build</h2>
-        <p class="ideas-intro">Things I've either already started or would like to start:</p>
+      <section hidden id="building" class="section section-ideas">
+        <h2>Current Builds & Experiments</h2>
+        <p class="ideas-intro">Things I'm actively building, tinkering with, or dreaming up:</p>
         <ul class="ideas-list">
           <li>⚡ Using NLP to automatically generate a "power level comparison"</li>
           <li>📊 Creating a dashboard for sports players that shows all relevant data for a bet in one website</li>
@@ -360,6 +369,10 @@
 
     <footer class="site-footer container">
       <small>© <span id="year"></span> Aaron Kann. Built with HTML/CSS/JS.</small>
+      <div class="footer-links">
+        <a href="mailto:aaron@stevek.com">aaron@stevek.com</a>
+        <a href="https://www.linkedin.com/in/aaron-kann" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </footer>
 
     <script src="script.js"></script>
