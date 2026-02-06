@@ -65,7 +65,9 @@
 
   function updateFocusVisibility() {
     if (!focusSelector) return;
-    focusSelector.hidden = pendingCategory !== 'projects';
+    const show = pendingCategory === 'projects';
+    focusSelector.hidden = !show;
+    focusSelector.style.display = show ? '' : 'none';
   }
 
   // handleCategoryClick: Handles category button selection
