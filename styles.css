@@ -280,11 +280,11 @@ main.container.content-active {
 /* Category & Focus Selectors */
 .selector-container { margin-top: 2rem; }
 .selector-label { color: var(--muted); margin-bottom: 0.75rem; font-size: 1rem; }
-.category-selector { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.category-selector { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap }
 .category-btn { background: var(--card); border: 2px solid var(--border); color: var(--text); }
 .category-btn:hover { border-color: var(--brand); background: color-mix(in oklab, var(--brand) 15%, var(--card)); }
 .category-btn.active { border-color: var(--brand); background: var(--brand); color: white; }
-.focus-selector { margin-top: 1.5rem; }
+.focus-selector { margin-bottom: 1.5rem; }
 .focus-buttons { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 .filter-btn[data-filter=""] {
   background: #e2e8f0;
@@ -563,30 +563,6 @@ main.container.content-active {
 .item-head { display: flex; gap: .75rem; align-items: baseline; justify-content: center; flex-wrap: wrap; }
 .muted { color: var(--muted); }
 
-.project-playground {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  background: color-mix(in srgb, rgba(124,58,237,0.25), var(--card));
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.project-playground .playground-header {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.project-playground .playground-header h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-.project-playground .playground-subtitle {
-  margin: .35rem 0 0;
-  color: var(--muted);
-  font-size: .9rem;
-}
-.timeline.playground { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
 .view-more {
   margin-top: 1.5rem;
