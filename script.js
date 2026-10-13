@@ -790,61 +790,78 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   apply('');
 })();
 
-// Skill chip details viewer
+// Skill chip usage viewer: clicking a skill shows the experience and project cards that use it
 (function () {
   const details = document.getElementById('skillDetails');
   if (!details) return;
   const nameEl = document.getElementById('skillName');
-  const descEl = document.getElementById('skillDesc');
+  const usesEl = document.getElementById('skillUses');
+  const chips = document.querySelectorAll('.skill-chip');
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  const norm = s => s.trim().toLowerCase();
+  const groups = [
+    { title: 'Experience', selector: '#experience .item[data-skills]', timelineClass: 'exp-timeline' },
+    { title: 'Projects', selector: '#projects .item[data-skills]', timelineClass: 'project-timeline' }
+  ];
 
-  // You can customize these descriptions later inline or via data-desc
-  const defaultDescriptions = {
-    'Python': 'Data analysis, ML prototyping, scripting, and web backends.',
-    'JavaScript': 'Interactive UIs and client-side logic; Node basics.',
-    'SQL': 'Querying, joins, aggregations; schema design basics.',
-    'R': 'Statistical analysis and visualization workflows.',
-    'TypeScript': 'Typed React apps; safer front-end logic.',
-    'HTML/CSS': 'Responsive, accessible interfaces with modern CSS.',
-    'Java': 'OOP, data structures, and algorithms training.',
-    'C++': 'Performance and memory model fundamentals.',
-    'C': 'Low-level programming concepts and systems basics.',
-    'React': 'Component-driven UIs; hooks and state management.',
-    'Django': 'Rapid backends with ORM, auth, and admin.',
-    'Flask': 'Light APIs and quick prototypes.',
-    'Seaborn': 'Statistical plotting on top of Matplotlib.',
-    'SciKit ML': 'Classical ML models, pipelines, evaluation.',
-    'NumPy/Pandas': 'Vectorized computation and tabular data wrangling.',
-    'Selenium': 'UI automation and E2E testing.',
-    'BERT': 'Transformer-based NLP; embeddings and fine-tuning basics.',
-    'Git': 'Branching, PRs, code reviews, and workflows.',
-    'Cursor Code': 'AI-assisted development workflows.',
-    'Microsoft Excel': 'Pivot tables, charts, and functions.',
-    'Word': 'Technical documentation basics.',
-    'Tableau': 'Dashboards and storytelling with data.',
-    'REST APIs': 'Designing and consuming HTTP JSON services.'
-  };
-
-  function setDetails(skill, desc) {
-    nameEl.textContent = skill;
-    descEl.textContent = desc;
-    details.hidden = false;
+  // usesOf: Items in a group whose data-skills include the skill, in page order.
+  function usesOf(group, skill) {
+    return Array.from(document.querySelectorAll(group.selector)).filter(item =>
+      item.dataset.skills.split(',').map(norm).includes(skill));
   }
 
-  // Show details on hover (focus/blur for accessibility)
-  document.querySelectorAll('.skill-chip').forEach(chip => {
-    const show = () => {
-      const skill = chip.dataset.skill || chip.textContent.trim();
-      const desc = chip.dataset.desc || defaultDescriptions[skill] || '';
-      setDetails(skill, desc);
-    };
-    const hide = () => { details.hidden = true; };
-    chip.addEventListener('mouseenter', show);
-    chip.addEventListener('focus', show);
-    chip.addEventListener('mouseleave', hide);
-    chip.addEventListener('blur', hide);
+  // cloneCard: Copies a card without the page-state classes (filters, highlights, expansion).
+  function cloneCard(item) {
+    const clone = item.cloneNode(true);
+    clone.classList.remove('hidden-by-filter', 'highlight', 'expanded');
+    clone.removeAttribute('id');
+    if (isTouch) clone.addEventListener('click', () => clone.classList.toggle('expanded'));
+    return clone;
+  }
 
-    // Temporarily disable click behavior
-    chip.addEventListener('click', (e) => { e.preventDefault(); });
+  function renderUses(skill) {
+    usesEl.replaceChildren();
+    groups.forEach(group => {
+      const items = usesOf(group, norm(skill));
+      if (!items.length) return;
+      const heading = document.createElement('h4');
+      heading.textContent = group.title;
+      const timeline = document.createElement('div');
+      timeline.className = `timeline ${group.timelineClass}`;
+      items.forEach(item => timeline.appendChild(cloneCard(item)));
+      usesEl.append(heading, timeline);
+    });
+    if (!usesEl.children.length) {
+      const empty = document.createElement('p');
+      empty.className = 'skill-empty';
+      empty.textContent = 'Used in coursework — no featured projects yet.';
+      usesEl.appendChild(empty);
+    }
+  }
+
+  let selected = null;
+  chips.forEach(chip => {
+    const skill = chip.dataset.skill || chip.textContent.trim();
+    const count = groups.reduce((n, g) => n + usesOf(g, norm(skill)).length, 0);
+    chip.setAttribute('aria-pressed', 'false');
+    if (!count) chip.classList.add('no-uses');
+
+    chip.addEventListener('click', e => {
+      e.preventDefault();
+      const deselect = selected === chip;
+      chips.forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
+      if (deselect) {
+        selected = null;
+        details.hidden = true;
+        return;
+      }
+      selected = chip;
+      chip.classList.add('selected');
+      chip.setAttribute('aria-pressed', 'true');
+      nameEl.textContent = skill;
+      renderUses(skill);
+      details.hidden = false;
+    });
   });
 })();
 

@@ -38,7 +38,7 @@
             <button class="btn category-btn" data-category="experience">Experience</button>
             <button class="btn category-btn" data-category="education">Education</button>
             <button class="btn category-btn" data-category="skills">Skills</button>
-            <button class="btn category-btn" data-category="builds">The Lab</button>
+            <!-- <button class="btn category-btn" data-category="builds">The Lab</button> -->
             <button class="btn category-btn" data-category="other">Other</button>
           </div>
           
@@ -64,8 +64,8 @@
 
       <section id="projects" class="section" data-tags="swe ml data genai">
         <h2>Projects</h2>
-        <div class="timeline">
-          <div class="item" data-tags="data swe genai" data-skills="Python, React, Pandas, Cursor Code">
+        <div class="timeline project-timeline">
+          <div class="item" data-tags="data swe genai" data-skills="Python, React, NumPy/Pandas, Cursor Code">
             <div class="item-head">
               <strong><a href="https://ai-vs-dot-com.vercel.app/" target="_blank" rel="noopener">The Bigger Short</a></strong>
             </div>
@@ -158,6 +158,22 @@
             </div>
           </div>
 
+          <div class="item" data-tags="data swe" data-skills="Python, NumPy/Pandas">
+            <div class="item-head">
+              <strong><a href="https://changian8.github.io/insider-trading/" target="_blank" rel="noopener">Polymarket Insider Trading</a></strong>
+            </div>
+            <p class="description">
+              Investigation into using Polymarket API data to identify potential insider trades.
+              Made for a Software Engineering class, so made with an intentional focus on best coding practices.  
+              Found no evidence of insider trading.</p>
+            <p class="tags-row"><span class="tag">Python</span> <span class="tag">NumPy/Pandas</span></p>
+            <div class="links">
+              <a class="link-pill" href="https://github.com/changian8/insider-trading" target="_blank" rel="noopener" aria-label="GitHub repository">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05.82-.23 1.67-.35 2.52-.35s1.7.12 2.5.35c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.21 2.43.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.34 4.82-4.57 5.08.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10 10 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+              </a>
+            </div>
+          </div>
+
           <div class="item" data-tags="data" data-skills="Python, NumPy/Pandas, Seaborn">
             <div class="item-head">
               <strong><a href="https://docs.google.com/presentation/d/13RM1hu3cDjWuUEdVZCIJDSgTF4I0WIW-W1bmwm8S6MY/edit?usp=sharing" target="_blank" rel="noopener">Studying the “Grammy Bump”</a></strong>
@@ -225,25 +241,51 @@
 
       <section id="experience" class="section">
         <h2>Experience</h2>
-        <div class="timeline">
-          <div class="item collapsible" tabindex="0" data-tags="swe">
+        <div class="timeline exp-timeline">
+          <div class="item collapsible" tabindex="0" data-tags="ml data" data-skills="Python, SQL, XGBoost, BigQuery, PostgreSQL">
             <div class="item-head">
-              <strong>Citmit, Inc.</strong>
-              <span>Software Developer</span>
-              <span class="muted">La Jolla, CA • July 2024 — August 2025</span>
+              <strong class="company">Major League Baseball</strong>
+              <span class="role">Machine Learning Intern</span>
             </div>
+            <p class="dates">June 2026 — August 2026</p>
+            <ul>
+              <li>Built an XGBoost model in Google BigQuery predicting content click/completion rate from impressions data.</li>
+              <li>Integrated the CTR model's score as a feature into the For You algorithm, improving log loss from 0.135 to 0.110.</li>
+              <li>Productionized the model into an hourly-refresh pipeline, recalculating and writing predictions to PostgreSQL.</li>
+              <li>Identified breaking news being suppressed by personalization and built the case for the feature now in A/B testing.</li>
+            </ul>
+          </div>
+          <div class="item collapsible" tabindex="0" data-tags="data swe" data-skills="React, JavaScript, SQL">
+            <div class="item-head">
+              <strong class="company">Boeing Employees Flight Association</strong>
+              <span class="role">Data Science Intern</span>
+            </div>
+            <p class="dates">March 2026 — June 2026</p>
+            <ul>
+              <li>Built React-based event tracking (views/clicks) and relational database system to store instrumentation data.</li>
+              <li>Shipped admin dashboard visualizing per-slot conversion rates for new pilots looking in the instructor directory.</li>
+              <li>Found proof of alphabetical bias across a summer's worth of data (~50 users) and proposed fair alternative.</li>
+              <li>Gained familiarity prompting AI tooling by using OpenCode (Claude Code alternative) to write and review code.</li>
+            </ul>
+          </div>
+          <div class="item collapsible" tabindex="0" data-tags="swe" data-skills="React, JavaScript, HTML/CSS, Git">
+            <div class="item-head">
+              <strong class="company">Citmit, Inc.</strong>
+              <span class="role">Founding Software Engineer</span>
+            </div>
+            <p class="dates">July 2024 — August 2025</p>
             <ul>
               <li>Worked as a team of two, building the frontend from scratch to delivering for local city govenment clientele.</li>
               <li>Built the navigation, dashboard, inbox and project pages by learning React.js on the job</li>
               <li>Achieved a top 10% ranking in Y Combinator applicants and was admitted to Microsoft and UC Startup Program.</li>
             </ul>
           </div>
-          <div class="item collapsible" tabindex="0" data-tags="data swe ml">
+          <div class="item collapsible" tabindex="0" data-tags="data swe ml" data-skills="Python, REST APIs">
             <div class="item-head">
-              <strong>DFSOPC — Daily Fantasy Sports</strong>
-              <span>Data Engineer</span>
-              <span class="muted">Ann Arbor, MI • September 2022 — March 2023</span>
+              <strong class="company">DFSOPC — Daily Fantasy Sports</strong>
+              <span class="role">Sole Developer</span>
             </div>
+            <p class="dates">September 2022 — March 2023</p>
             <ul>
               <li>Aggregated live odds from multiple APIs to surface potential value bets for subscribers.</li>
               <li>Maintained data pipeline in which consumers had 24/7 access to.</li>
@@ -265,7 +307,7 @@
           </div>
           <div class="item collapsible" tabindex="0" data-tags="swe ml data">
             <div class="item-head">
-              <strong><a href="transcript.pdf" target="_blank" rel="noopener">University of California, San Diego</a></strong>
+              <strong>University of California, San Diego</strong>
               <span>B.S. in Mathematics-Computer Science, Business Economics Minor</span>
               <span class="muted">Graduated March 2025 • GPA: 3.85</span>
             </div>
@@ -300,26 +342,24 @@
               <button class="skill-chip" data-skill="SciKit ML" data-tags="ml data">SciKit ML</button>
               <button class="skill-chip" data-skill="NumPy/Pandas" data-tags="data ml">NumPy/Pandas</button>
               <button class="skill-chip" data-skill="Selenium" data-tags="swe">Selenium</button>
-              <button class="skill-chip" data-skill="BERT" data-tags="genai ml">BERT</button>
+              <button class="skill-chip" data-skill="XGBoost" data-tags="ml data">XGBoost</button>
             </div>
           </div>
           <div class="skills-group" data-group="other">
             <h3>Other</h3>
             <div class="skills-list">
               <button class="skill-chip" data-skill="Git" data-tags="swe">Git</button>
-              <button class="skill-chip" data-skill="Cursor Code" data-tags="swe genai">Cursor Code</button>
-              <button class="skill-chip" data-skill="GitHub CoPilot" data-tags="genai swe">GitHub CoPilot</button>
-              <button class="skill-chip" data-skill="Excel" data-tags="data">Excel</button>
-              <button class="skill-chip" data-skill="Word" data-tags="">Word</button>
+              <button class="skill-chip" data-skill="BigQuery" data-tags="data">BigQuery</button>
+              <button class="skill-chip" data-skill="PostgreSQL" data-tags="data swe">PostgreSQL</button>
               <button class="skill-chip" data-skill="Tableau" data-tags="data">Tableau</button>
               <button class="skill-chip" data-skill="REST APIs" data-tags="swe data">REST API’s</button>
-              <button class="skill-chip" data-skill="Canva" data-tags="">Canva</button>
+              <button class="skill-chip" data-skill="Agentic Coding" data-tags="">Agentic Coding</button>
             </div>
           </div>
         </div>
         <div id="skillDetails" class="skill-details" aria-live="polite" hidden>
           <h3 id="skillName"></h3>
-          <p id="skillDesc"></p>
+          <div id="skillUses"></div>
         </div>
       </section>
 
@@ -362,11 +402,6 @@
     </main>
 
     <footer class="site-footer container">
-      <small>© <span id="year"></span> Aaron Kann. Built with HTML/CSS/JS.</small>
-      <div class="footer-links">
-        <a href="mailto:aaron@stevek.com">aaron@stevek.com</a>
-        <a href="https://www.linkedin.com/in/aaron-kann" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
     </footer>
 
     <script src="script.js"></script>
