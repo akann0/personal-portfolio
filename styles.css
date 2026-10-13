@@ -779,3 +779,29 @@ body {
 .skill-chip:hover, .skill-chip.selected { text-shadow: 0 0 10px color-mix(in oklab, var(--gold) 55%, transparent); }
 .skill-chip.selected { box-shadow: none; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 5px; }
 .tag { border-color: rgba(140, 150, 220, .22); }
+
+/* Projects: title-first cards matching Experience; details reveal on hover */
+.project-timeline .item { padding: 1.1rem 1rem; transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.project-timeline .item-head { gap: .5rem; align-items: center; }
+.project-timeline .item-head strong { font-size: 1.35rem; line-height: 1.2; }
+.project-timeline .tags-row { margin-top: .55rem; gap: .35rem; }
+.project-timeline .tag { font-size: .72rem; padding: .05rem .35rem; opacity: .85; }
+.project-timeline .item p.description,
+.project-timeline .item .links {
+  margin-top: 0;
+  margin-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, opacity .35s ease, margin .35s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-timeline .item:hover p.description,
+  .project-timeline .item:focus-within p.description { margin-top: .6rem; max-height: 200px; opacity: 1; }
+  .project-timeline .item:hover .links,
+  .project-timeline .item:focus-within .links { margin-top: .6rem; max-height: 60px; opacity: 1; }
+  .project-timeline .item:hover,
+  .project-timeline .item:focus-within { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+}
+.project-timeline .item.expanded p.description { margin-top: .6rem; max-height: 200px; opacity: 1; }
+.project-timeline .item.expanded .links { margin-top: .6rem; max-height: 60px; opacity: 1; }
